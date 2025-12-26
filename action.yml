@@ -1,0 +1,20 @@
+name: 'Code Quality Gate'
+description: 'Enforces code quality gates on pull requests'
+author: 'Your Team'
+
+inputs:
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+  coverage-threshold:
+    description: 'Minimum code coverage percentage (default: 70)'
+    required: false
+    default: '70'
+  coverage-report-path:
+    description: 'Path to coverage report file'
+    required: false
+    default: 'coverage/coverage-final.json'
+
+runs:
+  using: 'node18'
+  main: 'dist/index.js'

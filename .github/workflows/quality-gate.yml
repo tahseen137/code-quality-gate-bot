@@ -1,0 +1,44 @@
+name: Code Quality Gate
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+        continue-on-error: true
+
+      - name: Run linting
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Run type check
+        run: npm run type-check
+        continue-on-error: true
+
+      - name: Build bot
+        run: npm run build
+
+      - name: Run quality gate
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-threshold: 70
+          coverage-report-path: coverage/coverage-final.json
