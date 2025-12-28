@@ -1,19 +1,23 @@
 name: 'Code Quality Gate'
-description: 'Enforces code quality gates on pull requests'
+description: 'Enforces code quality gates on pull requests (Node.js, Java, Spring Boot)'
 author: 'Your Team'
 
 inputs:
   github-token:
     description: 'GitHub token for API access'
     required: true
+  project-type:
+    description: 'Project type: nodejs, java, springboot, or auto (default: auto)'
+    required: false
+    default: 'auto'
   coverage-threshold:
     description: 'Minimum code coverage percentage (default: 70)'
     required: false
     default: '70'
   coverage-report-path:
-    description: 'Path to coverage report file'
+    description: 'Path to coverage report file (auto-detected if not provided)'
     required: false
-    default: 'coverage/coverage-final.json'
+    default: ''
 
 runs:
   using: 'node18'

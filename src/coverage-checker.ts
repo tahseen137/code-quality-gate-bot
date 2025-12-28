@@ -23,7 +23,7 @@ export async function checkCoverage(
     }
 
     const reportContent = fs.readFileSync(coverageReportPath, 'utf-8');
-    const coverage = parseCoverageReport(reportContent);
+    const coverage = parseCoverageReport(reportContent, coverageReportPath);
 
     const passed = coverage >= threshold;
     return {
@@ -44,7 +44,12 @@ export async function checkCoverage(
   }
 }
 
-function parseCoverageReport(content: string): number {
+function parseCoverageReport(content: string, filePath: string): number {
+  // Parse Jacoco XML (Java)
+  if (filePath.endsWith('.xml')) {
+    return parseJacocoXml(content);
+  }
+
   // Parse coverage.json (from Jest/Vitest)
   try {
     const json = JSON.parse(content);
@@ -61,5 +66,24 @@ function parseCoverageReport(content: string): number {
     return Math.round(parseFloat(match[1]));
   }
 
+  return 0;
+}
+
+function parseJacocoXml(content: string): number {
+  try {
+    // Extract line coverage from Jacoco XML
+    // Format: <counter type="LINE" missed="10" covered="90"/>
+    const lineMatch = content.match(/<counter type="LINE" missed="(\d+)" covered="(\d+)"/);
+    if (lineMatch) {
+      const missed = parseInt(lineMatch[1], 10);
+      const covered = parseInt(lineMatch[2], 10);
+      const total = missed + covered;
+      if (total > 0) {
+        return Math.round((covered / total) * 100);
+      }
+    }
+  } catch {
+    // Ignore parsing errors
+  }
   return 0;
 }
