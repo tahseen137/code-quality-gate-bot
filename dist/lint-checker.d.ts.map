@@ -1,0 +1,1 @@
+{"version":3,"file":"lint-checker.d.ts","sourceRoot":"","sources":["../src/lint-checker.ts"],"names":[],"mappings":"AAEA,MAAM,WAAW,UAAU;IACzB,MAAM,EAAE,OAAO,CAAC;IAChB,MAAM,EAAE,MAAM,CAAC;IACf,QAAQ,EAAE,MAAM,CAAC;IACjB,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAsB,YAAY,CAAC,gBAAgB,GAAE,MAAY,GAAG,OAAO,CAAC,UAAU,CAAC,CA+CtF"}
