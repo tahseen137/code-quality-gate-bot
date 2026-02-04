@@ -1,5 +1,4 @@
 import * as core from '@actions/core';
-import * as fs from 'fs';
 import { checkCoverage } from './coverage-checker';
 import { checkLinting } from './lint-checker';
 import { checkTypes } from './type-checker';

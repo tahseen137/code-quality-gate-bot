@@ -1,6 +1,9 @@
 name: 'Code Quality Gate'
 description: 'Enforces code quality gates on pull requests (Node.js, Java, Spring Boot)'
-author: 'Your Team'
+author: 'Tahseen-ur Rahman'
+branding:
+  icon: 'check-circle'
+  color: 'green'
 
 inputs:
   github-token:

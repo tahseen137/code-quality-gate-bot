@@ -1,0 +1,1 @@
+{"version":3,"file":"coverage-checker.d.ts","sourceRoot":"","sources":["../src/coverage-checker.ts"],"names":[],"mappings":"AAEA,MAAM,WAAW,cAAc;IAC7B,MAAM,EAAE,OAAO,CAAC;IAChB,QAAQ,EAAE,MAAM,CAAC;IACjB,SAAS,EAAE,MAAM,CAAC;IAClB,OAAO,EAAE,MAAM,CAAC;CACjB;AAED,wBAAsB,aAAa,CACjC,kBAAkB,EAAE,MAAM,EAC1B,SAAS,GAAE,MAAW,GACrB,OAAO,CAAC,cAAc,CAAC,CA+BzB"}

@@ -9,7 +9,7 @@ export interface LintResult {
 
 export async function checkLinting(workingDirectory: string = '.'): Promise<LintResult> {
   try {
-    const output = execSync('eslint . --format json --max-warnings 0', {
+    execSync('eslint . --format json --max-warnings 0', {
       cwd: workingDirectory,
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
